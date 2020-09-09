@@ -1,0 +1,46 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.content {
+    width: 90%;
+    margin: 100px auto;
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+tr {
+    border-bottom: 1px solid #ccc;
+    height: 50px;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 4px;
+}
+
+.todo-list {
+    width: 65%;
+}
+
+.form {
+    width: 30%;
+    padding-top: 3%;
+}
+
+input {
+    width: 100%;
+}
+
+
+p {
+    display: none;
+}

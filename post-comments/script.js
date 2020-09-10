@@ -56,9 +56,37 @@ async function main() {
         posts = await getPosts();
         comments = await getComments();
         concatPostsAndComments(posts, comments);
+        drawBlocks(posts);
     } catch (err) {
         alert(err)
     }
 }
 
 main();
+
+function drawBlocks() {
+    let colors = ['#03071e', '#370617', '#6a040f', '#9d0208', '#d00000', '#dc2f02', '#e85d04', '#f48c06', '#faa307'];
+
+    posts.forEach(post => {
+        let container = document.querySelector('.container');
+        let postDiv = document.createElement('div');
+        postDiv.classList.add('post');
+        postDiv.innerHTML = `<p class="postTitle">${post.title}</p> <p class="postText">${post.body}</p>`;
+        container.append(postDiv);
+
+        let commentSection = document.createElement('div');
+        commentSection.classList.add('commentSection');
+        postDiv.append(commentSection);
+
+        post.comments.forEach(comment => {
+            let userComment = document.createElement('div');
+            commentSection.append(userComment);
+            userComment.classList.add('comment');
+            userComment.innerHTML = `<h5>${comment.name}</h5><h6>${comment.email}</h6> <p>${comment.body}</p>`;
+        })
+    });
+    let postTitles = Array.prototype.slice.call(document.querySelectorAll('.postTitle'));
+    postTitles.forEach(elem => {
+        elem.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];;
+    })
+}

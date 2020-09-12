@@ -82,7 +82,7 @@ function drawBlocks() {
             let userComment = document.createElement('div');
             commentSection.append(userComment);
             userComment.classList.add('comment');
-            userComment.innerHTML = `<h5>${comment.name}</h5><h6>${comment.email}</h6> <p>${comment.body}</p>`;
+            userComment.innerHTML = `<h4>${comment.name}</h4><h6><a href="#" style="color:black;">${comment.email}</a></h6> <p>${comment.body}</p>`;
         })
     });
     let postTitles = Array.prototype.slice.call(document.querySelectorAll('.postTitle'));

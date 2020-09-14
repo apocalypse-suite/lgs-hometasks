@@ -1,0 +1,48 @@
+.wrap {
+    width: 800px;
+    margin: auto;
+}
+
+.smallWrap {
+    width: 500px;
+    margin: auto;
+}
+
+button {
+    width: 125px;
+}
+
+#profile {
+    width: 500px;
+    height: 500px;
+    display: none;
+}
+
+#profileHeader {
+    height: 150px;
+}
+
+.card-footer {
+    height: 60px;
+}
+
+.formLink {
+    width: 100px;
+    margin: auto;
+    text-align: center;
+    text-decoration: none;
+}
+
+#avatar {
+    width: 100px;
+    height: 100px;
+    margin-top: -70px;
+    background-color: white;
+    padding: 5px;
+    border-radius: 50%;
+}
+
+.icon {
+    width: 30px;
+    height: 30px;
+}

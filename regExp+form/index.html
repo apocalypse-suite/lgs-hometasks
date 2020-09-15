@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Regexp & form</title>
+
+    <style>
+        .err {
+            color: red;
+        }
+
+        .corr {
+            -webkit-box-shadow: 0px 0px 5px 0px rgba(67, 171, 55, 1);
+            -moz-box-shadow: 0px 0px 5px 0px rgba(67, 171, 55, 1);
+            box-shadow: 0px 0px 5px 0px rgba(67, 171, 55, 1);
+            border: 2px solid rgb(0, 182, 61);
+        }
+
+        .incorr {
+            -webkit-box-shadow: 0px 0px 5px 0px rgba(201, 36, 36, 1);
+            -moz-box-shadow: 0px 0px 5px 0px rgba(201, 36, 36, 1);
+            box-shadow: 0px 0px 5px 0px rgba(201, 36, 36, 1);
+            border: 2px solid red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form name="form">
+        <label>First Name:
+            <input type="text" name="firstName">
+            <p class="err"></p>
+        </label>
+        <label>Last Name:
+            <input type="text" name="lastName">
+            <p class="err"></p>
+        </label>
+        <label>Email:
+            <input type="email" name='email'>
+            <p class="err"></p>
+        </label>
+        <label>Phone:
+            <input type="tel" name='phone'>
+            <p class="err"></p>
+        </label>
+        <label>Password:
+            <input type="password" name="pass">
+            <p class="err"></p>
+        </label>
+        <label>Confirm Password:
+            <input type="password" name="confPass">
+            <p class="err"></p>
+        </label>
+        <br>
+    </form>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -46,3 +46,17 @@ button {
     width: 30px;
     height: 30px;
 }
+
+.card-footer{
+    position: relative;
+}
+.error{
+    padding: 3px;
+                 background-color: #ad0904d4;
+    border: 1px solid #610000;
+    color: white;
+    border-radius: 5px;
+    position: absolute;
+    bottom: 35px;
+    display: none;
+}

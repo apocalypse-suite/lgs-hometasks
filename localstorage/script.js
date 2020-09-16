@@ -2,7 +2,6 @@ let signInFormDiv = document.getElementById('signInForm');
 let signInLink = document.getElementsByClassName('loginNow')[0];
 let signUpFormDiv = document.getElementById('signUpForm');
 let signUpLink = document.getElementsByClassName('registerNow')[0];
-
 let signInForm = document.forms[0];
 let signUpForm = document.forms[1];
 
@@ -10,13 +9,25 @@ function termsCheck() {
     signUpForm.terms.checked ? signUpForm.signUpBtn.disabled = false : signUpForm.signUpBtn.disabled = true;
 }
 
+let usersData = [];
 signUpForm.signUpBtn.onclick = function () {
-    signUpFormDiv.style.display = "none";
-    signInLink.style.display = "none";
-    document.getElementById('profile').style.display = "block";
-    document.getElementById('userName').innerText = `${signUpForm.firstName.value}` + ` ` + `${signUpForm.lastName.value}`;
-    document.getElementById('email').innerText = `${signUpForm.myMail.value}`;
-    document.getElementById('position').innerText = `${signUpForm.position.value}`;
+
+    let newUser = {
+        email: document.getElementById('registeredMail').value,
+        password: document.getElementById('registeredPass').value
+    };
+    usersData.push(newUser);
+    console.log(usersData);
+    localStorage.setItem('UsersLogin', JSON.stringify(usersData));
+    signUpForm.reset();
+    signUpForm.signUpBtn.disabled = true;
+    // window.location.reload();
+    // signUpFormDiv.style.display = "none";
+    // signInLink.style.display = "none";
+    // document.getElementById('profile').style.display = "block";
+    // document.getElementById('userName').innerText = `${signUpForm.firstName.value}` + ` ` + `${signUpForm.lastName.value}`;
+    // document.getElementById('email').innerText = `${signUpForm.myMail.value}`;
+    // document.getElementById('position').innerText = `${signUpForm.position.value}`;
 }
 
 function checkSex(type) {
@@ -31,20 +42,25 @@ signOutBtn.addEventListener('click', function () {
     signInForm.style.display = "block";
 })
 
-signUpLink.addEventListener('click', function (e) {
-    e.preventDefault();
-    signInFormDiv.style.display = 'none';
-    signUpLink.style.display = 'none';
-    signInLink.style.display = 'block';
-    signUpFormDiv.style.display = 'block';
-})
-signInLink.addEventListener('click', function (e) {
-    e.preventDefault();
-    signUpFormDiv.style.display = 'none';
-    signInLink.style.display = 'none';
-    signUpLink.style.display = 'block';
-    signInFormDiv.style.display = 'block';
-})
+let links = document.querySelectorAll('.transferLink');
+for (let i = 0; i < links.length; i++) {
+    links[i].addEventListener("click", () => {
+        switch (i) {
+            case 0:
+                signInFormDiv.style.display = 'none';
+                signUpLink.style.display = 'none';
+                signInLink.style.display = 'block';
+                signUpFormDiv.style.display = 'block';
+                break;
+            case 1:
+                signUpFormDiv.style.display = 'none';
+                signInLink.style.display = 'none';
+                signUpLink.style.display = 'block';
+                signInFormDiv.style.display = 'block';
+                break;
+        }
+    })
+}
 
 function checkFields(signInForm) {
     let signInInputs = signInForm.elements;
@@ -59,3 +75,4 @@ function showErr(empty) {
     //
     // }
 }
+

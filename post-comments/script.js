@@ -39,7 +39,7 @@ async function getPosts() {
 }
 
 function concatPostsAndComments(posts, comments) {
-    comments.forEach((comment, index) => {
+    comments.forEach((comment) => {
         const postId = comment.postId;
         let foundPost = posts.find(post => post.id === postId);
         if (foundPost.hasOwnProperty('comments')) {

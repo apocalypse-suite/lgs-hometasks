@@ -1,9 +1,13 @@
-let signInFormDiv = document.getElementById('signInForm');
+let getID = function (id) {
+    return document.getElementById(id);
+};
+let signInFormDiv = getID('signInForm');
 let signInLink = document.getElementsByClassName('loginNow')[0];
-let signUpFormDiv = document.getElementById('signUpForm');
+let signUpFormDiv = getID('signUpForm');
 let signUpLink = document.getElementsByClassName('registerNow')[0];
 let signInForm = document.forms[0];
 let signUpForm = document.forms[1];
+let err = document.querySelector('.error');
 
 function termsCheck() {
     signUpForm.terms.checked ? signUpForm.signUpBtn.disabled = false : signUpForm.signUpBtn.disabled = true;
@@ -13,32 +17,25 @@ let usersData = [];
 signUpForm.signUpBtn.onclick = function () {
 
     let newUser = {
-        email: document.getElementById('registeredMail').value,
-        password: document.getElementById('registeredPass').value
+        email: getID('registeredMail').value,
+        name: getID('registeredName').value,
+        surname: getID('registeredSurname').value,
+        password: getID('registeredPass').value,
+        sex: document.querySelector('.check:checked').value,
+        position: document.querySelector('.custom-select').value
     };
     usersData.push(newUser);
     console.log(usersData);
     localStorage.setItem('UsersLogin', JSON.stringify(usersData));
     signUpForm.reset();
     signUpForm.signUpBtn.disabled = true;
-    // window.location.reload();
-    // signUpFormDiv.style.display = "none";
-    // signInLink.style.display = "none";
-    // document.getElementById('profile').style.display = "block";
-    // document.getElementById('userName').innerText = `${signUpForm.firstName.value}` + ` ` + `${signUpForm.lastName.value}`;
-    // document.getElementById('email').innerText = `${signUpForm.myMail.value}`;
-    // document.getElementById('position').innerText = `${signUpForm.position.value}`;
+    window.location.reload();
 }
 
-function checkSex(type) {
-    let avatar = document.getElementById('avatar');
-    type === 'male' ? avatar.src = 'images/dude-prof.svg' : avatar.src = 'images/fam-prof.svg';
-}
-
-let signOutBtn = document.getElementById('signOut');
+let signOutBtn = getID('signOut');
 signOutBtn.addEventListener('click', function () {
     signUpForm.reset();
-    document.getElementById('profile').style.display = "none";
+    getID('profile').style.display = "none";
     signInForm.style.display = "block";
 })
 
@@ -70,24 +67,31 @@ function checkFields(signInForm) {
 }
 
 function showErr(empty) {
-    empty ? document.querySelector('.error').style.display = 'block' : document.querySelector('.error').style.display = 'none';
+    empty ? (err.style.display = 'block', err.innerText = 'Please, fill all the fields out') : err.style.display = 'none';
 }
 
 function login() {
-    let loginMail = document.getElementById('loginMail').value;
-    let loginPass = document.getElementById('loginPass').value;
+    let loginMail = getID('loginMail').value;
+    let loginPass = getID('loginPass').value;
     if (localStorage.getItem('UsersLogin')) {
         let allUsers = JSON.parse(localStorage.getItem('UsersLogin'))
         const matchedUser = allUsers.filter(user => {
             return loginMail === user.email && loginPass === user.password;
         })
-        matchedUser.length ? console.log('Login successful') : console.log('Wrong credentials');
+        matchedUser.length ? showProfile(matchedUser) : (err.style.display = 'block', err.innerText = 'Wrong email or password');
+
+        function showProfile() {
+            signInFormDiv.style.display = "none";
+            signUpLink.style.display = "none";
+            getID('profile').style.display = "block";
+            getID('userName').innerText = `${matchedUser[0].name}` + ` ` + `${matchedUser[0].surname}`;
+            getID('email').innerText = `${matchedUser[0].email}`;
+            getID('position').innerText = `${matchedUser[0].position}`;
+            let avatar = getID('avatar');
+            matchedUser[0].sex === 'male' ? avatar.src = 'images/dude-prof.svg' : avatar.src = 'images/fam-prof.svg';
+        }
     } else {
-        console.log('Wrong credentials') // Don't say "Not a registered user"
+        err.style.display = 'block';
+        err.innerText = 'Empty localstorage';
     }
 }
-
-function showProfile() {
-///
-}
-

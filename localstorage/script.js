@@ -65,14 +65,29 @@ for (let i = 0; i < links.length; i++) {
 function checkFields(signInForm) {
     let signInInputs = signInForm.elements;
     for (let i = 0; i < signInInputs.length - 1; i++) {
-        signInInputs[i].value === '' ? showErr(true) : showErr(false);
+        signInInputs[i].value === '' ? showErr(true) : (showErr(false), login());
     }
 }
 
 function showErr(empty) {
     empty ? document.querySelector('.error').style.display = 'block' : document.querySelector('.error').style.display = 'none';
-    // if (!empty) {
-    //
-    // }
+}
+
+function login() {
+    let loginMail = document.getElementById('loginMail').value;
+    let loginPass = document.getElementById('loginPass').value;
+    if (localStorage.getItem('UsersLogin')) {
+        let allUsers = JSON.parse(localStorage.getItem('UsersLogin'))
+        const matchedUser = allUsers.filter(user => {
+            return loginMail === user.email && loginPass === user.password;
+        })
+        matchedUser.length ? console.log('Login successful') : console.log('Wrong credentials');
+    } else {
+        console.log('Wrong credentials') // Don't say "Not a registered user"
+    }
+}
+
+function showProfile() {
+///
 }
 

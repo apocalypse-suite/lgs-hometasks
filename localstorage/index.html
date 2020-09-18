@@ -20,15 +20,16 @@
                 <div class="px-3">
                     <div class="form-group">
                         <label>Email Address</label>
-                        <input type="text" class="form-control" name="myMail" placeholder="Type here...">
+                        <input id="loginMail" type="text" class="form-control" name="myMail" placeholder="Type here...">
                     </div>
                     <div class="form-group">
                         <label>Password</label>
-                        <input type="password" class="form-control" name="pass" placeholder="Type here...">
+                        <input id="loginPass" type="password" class="form-control" name="pass"
+                               placeholder="Type here...">
                     </div>
                 </div>
                 <div class="card-footer border-top">
-                    <p class="error">Please, fill all the fields out</p>
+                    <p class="error"></p>
                     <button type="button" class="btn btn-success btn-block" name="submitBtn"
                             onclick="checkFields(signInForm)">Sign
                         in
@@ -46,11 +47,13 @@
                 <div class="px-3">
                     <div class="form-group">
                         <label>First Name</label>
-                        <input type="text" class="form-control" name="firstName" placeholder="Type here...">
+                        <input id="registeredName" type="text" class="form-control" name="firstName"
+                               placeholder="Type here...">
                     </div>
                     <div class="form-group">
                         <label>Last Name</label>
-                        <input type="text" class="form-control" name="lastName" placeholder="Type here...">
+                        <input id="registeredSurname" type="text" class="form-control" name="lastName"
+                               placeholder="Type here...">
                     </div>
                     <div class="form-group">
                         <label>Email Address</label>
@@ -64,12 +67,12 @@
                     </div>
                     <div class="form-group">
                         <div class="form-check form-check-inline">
-                            <input onclick="checkSex('male')" class="form-check-input" type="radio"
+                            <input class="check form-check-input" type="radio"
                                    name="inlineRadioOptions" id="maleCheck" value="Man">
                             <label class="form-check-label" for="maleCheck">Male</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input onclick="checkSex('female')" class="form-check-input" type="radio"
+                            <input class="check form-check-input" type="radio"
                                    name="inlineRadioOptions" id="femCheck" value="Woman">
                             <label class="form-check-label" for="femCheck">Female</label>
                         </div>

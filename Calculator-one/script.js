@@ -15,21 +15,23 @@ let operations = {
 
 function checkOp() {
     if (count > 0) {
+        initNum = parseFloat(initNum);
+        currentNum = parseFloat(currentNum);
         switch (operation) {
             case '+': {
-                operations.plus(parseFloat(initNum), parseFloat(currentNum));
+                operations.plus(initNum, currentNum);
                 break;
             }
             case '-': {
-                operations.subtract(parseFloat(initNum), parseFloat(currentNum));
+                operations.subtract(initNum, currentNum);
                 break;
             }
             case '*': {
-                operations.multiply(parseFloat(initNum), parseFloat(currentNum));
+                operations.multiply(initNum, currentNum);
                 break;
             }
             case '/': {
-                operations.divide(parseFloat(initNum), parseFloat(currentNum));
+                operations.divide(initNum, currentNum);
                 break;
             }
         }

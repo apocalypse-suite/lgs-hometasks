@@ -1,3 +1,8 @@
+body {
+    background: rgb(130, 179, 205);
+    background: linear-gradient(90deg, rgba(130, 179, 205, 0.8827906162464986) 9%, rgba(93, 114, 217, 0.8295693277310925) 40%, rgba(208, 111, 134, 1) 70%, rgba(142, 88, 209, 1) 100%);
+}
+
 .calculator {
     width: 250px;
     height: 400px;

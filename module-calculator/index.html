@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+    <style>
+        body {
+            background: rgb(130, 179, 205);
+            background: linear-gradient(90deg, rgba(130, 179, 205, 0.8827906162464986) 9%, rgba(93, 114, 217, 0.8295693277310925) 40%, rgba(208, 111, 134, 1) 70%, rgba(142, 88, 209, 1) 100%);
+        }
+
+        .calculator {
+            width: 250px;
+            height: 400px;
+            margin: 40px auto;
+            display: grid;
+            align-content: center;
+            justify-content: center;
+            grid-column-start: 1;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: minmax(120px, auto) repeat(4, 2fr);
+            box-shadow: 5px 5px 15px 4px rgba(0, 0, 0, 0.66);
+        }
+
+        .input-output {
+            grid-column: 1 / -1;
+            background-color: rgba(0, 0, 0, 0.301);
+        }
+
+        .screen {
+            text-align: end;
+            line-height: 120px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 3em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="calculator">
+        <div class="input-output">
+            <button class="clear" value="''">C</button>
+            <div class="screen" value="0">0</div>
+        </div>
+        <button class="number" value="1">1</button>
+        <button class="number" value="2">2</button>
+        <button class="number" value="3">3</button>
+        <button class="operator" value="*">*</button>
+        <button class="number" value="4">4</button>
+        <button class="number" value="5">5</button>
+        <button class="number" value="6">6</button>
+        <button class="operator" value="/">/</button>
+        <button class="number" value="7">7</button>
+        <button class="number" value="8">8</button>
+        <button class="number" value="9">9</button>
+        <button class="operator" value="-">-</button>
+        <button class="number" value="0">0</button>
+        <button class="decimal" value=".">.</button>
+        <button class="calculate" value="=">=</button>
+        <button class="operator" value="+">+</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
